@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react-native";
 import React from "react";
-import Index from "./index";
+import Index from "../app/index";
 
 describe("Index screen", () => {
   it("renders the welcome text", () => {
