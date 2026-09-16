@@ -1,8 +1,8 @@
-# Welcome to your Expo app 👋
+# Sing His Praise
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+This project is an Expo-based React Native app for mobile and web experiences.
 
-## Get started
+## Development workflow
 
 1. Install dependencies
 
@@ -10,41 +10,67 @@ This is an [Expo](https://expo.dev) project created with [`create-expo-app`](htt
    npm install
    ```
 
-2. Start the app
+2. Start the local development server
 
    ```bash
-   npx expo start
+   npm start
    ```
 
-In the output, you'll find options to open the app in a
+3. Launch platform targets
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+   ```bash
+   npm run android
+   npm run ios
+   npm run web
+   ```
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+## Quality and testing workflow
 
-## Get a fresh project
-
-When you're ready, run:
+Run the project checks before merge or release:
 
 ```bash
-npm run reset-project
+npm run lint
+npm run typecheck
+npm test
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+For a single CI-style validation command:
+
+```bash
+npm run ci
+```
+
+## Refactoring strategy
+
+Keep the app maintainable by following these rules:
+
+- Extract reusable UI into components under the app/components folder.
+- Keep screen logic small and focused on one responsibility.
+- Move repeated styles and constants into shared files.
+- Prefer small, testable functions over large inline logic blocks.
+- Run lint, type-checks, and tests with every refactor.
+
+## Production readiness checklist
+
+Before shipping to production:
+
+- Unit and integration tests pass.
+- TypeScript checks pass without errors.
+- Linting passes.
+- Environment variables and app config are reviewed.
+- Android/iOS release builds are tested on real devices or simulators.
+- App icons, splash screen, and version metadata are verified.
+
+## Recommended release flow
+
+1. Build and validate locally.
+2. Run automated tests.
+3. Refactor and clean up technical debt.
+4. Test release builds on device.
+5. Publish to app stores or deploy the web build.
 
 ## Learn more
 
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+- [Expo documentation](https://docs.expo.dev/)
+- [React Native documentation](https://reactnative.dev/)
+- [Expo Router documentation](https://docs.expo.dev/router/introduction)
