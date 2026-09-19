@@ -1,11 +1,11 @@
 import { useLocalSearchParams } from "expo-router";
 import { ScrollView, StyleSheet, Text, View } from "react-native";
 
-import { songs } from "../constants/songs";
+import { getSongById } from "../database/songs";
 
 export default function SongDetailScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
-  const song = songs.find((item) => item.id === id);
+  const song = id ? getSongById(id) : undefined;
 
   if (!song) {
     return (

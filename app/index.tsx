@@ -8,7 +8,9 @@ import {
 } from "react-native";
 
 import { SongCard } from "./components/SongCard";
-import { songs } from "./constants/songs";
+import { loadSongs } from "./database/songs";
+
+const songs = loadSongs();
 
 export default function Index() {
   return (
